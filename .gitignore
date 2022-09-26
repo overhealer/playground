@@ -1,0 +1,10 @@
+﻿playground.sln
+Assembly-CSharp-Editor.csproj
+*.csproj
+.vsconfig
+UserSettings
+Temp
+obj
+Logs
+Library
+.vs
