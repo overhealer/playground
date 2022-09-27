@@ -9,8 +9,9 @@ namespace Playground {
         public float Gravity;
 
         [Header("Player")]
-        public float PlayerMovementSpeed;
-        public float PlayerJumpPower;
+        public float PlayerWalkSpeed;
+        public float PlayerRunSpeed;
+        public float PlayerJumpHeight;
         public float PlayerCameraSensitivity;
     }
 }

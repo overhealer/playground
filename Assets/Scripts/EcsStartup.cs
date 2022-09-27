@@ -45,8 +45,8 @@ namespace Playground {
         }
 
         private void Update() {
-            _systems?.Run();
             _inputService.OnUpdate();
+            _systems?.Run();
         }
 
         private void FixedUpdate() {

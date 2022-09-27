@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be7db2932c60ded4d8ea8924fc629f9f, type: 3}
   m_Name: Game Config
   m_EditorClassIdentifier: 
-  Gravity: -9.81
-  PlayerMovementSpeed: 3.5
-  PlayerJumpPower: 5
+  Gravity: -15
+  PlayerWalkSpeed: 3.5
+  PlayerRunSpeed: 6
+  PlayerJumpHeight: 3
   PlayerCameraSensitivity: 5

@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Playground {
     public class InputService : IService {
+        public bool IsJump { get { return Input.GetKeyDown(KeyCode.Space); } }
+        public bool IsSprint { get { return Input.GetKeyDown(KeyCode.LeftShift); } }
+
         public Vector3 MoveAxis { get { return _moveAxis; } }
         public Vector2 MouseAxis { get { return _mouseAxis; } }
 
