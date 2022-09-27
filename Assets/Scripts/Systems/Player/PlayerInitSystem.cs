@@ -14,9 +14,12 @@ namespace Playground {
             ref Player player = ref playerEntity.Get<Player>();
 
             GameObject playerGO = Object.Instantiate(_assetProvider.PlayerPrefab);
+            Camera playerCam = Object.Instantiate(_assetProvider.CameraPrefab);
             player.PlayerTranform = playerGO.transform;
             player.PlayerCharacterController = playerGO.GetComponent<CharacterController>();
             player.PlayerAnimator = playerGO.GetComponentInChildren<Animator>();
+            player.PlayerCamera = playerCam;
+            player.PlayerVirtualCamera = playerGO.GetComponentInChildren<Cinemachine.CinemachineVirtualCamera>();
         }
     }
 }

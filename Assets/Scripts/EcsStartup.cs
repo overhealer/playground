@@ -29,6 +29,7 @@ namespace Playground {
             _systems
                 .Add(new PlayerInitSystem())
                 .Add(new PlayerMovementSystem())
+                .Add(new PlayerAnimationSystem())
                 .Inject(_assetProvider)
                 .Inject(_gameConfig)
                 .Inject(_inputService)
@@ -39,6 +40,8 @@ namespace Playground {
 
             _lateSystems
                 .Init();
+
+            _inputService.LockMouse();
         }
 
         private void Update() {

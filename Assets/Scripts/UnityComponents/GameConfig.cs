@@ -11,5 +11,6 @@ namespace Playground {
         [Header("Player")]
         public float PlayerMovementSpeed;
         public float PlayerJumpPower;
+        public float PlayerCameraSensitivity;
     }
 }

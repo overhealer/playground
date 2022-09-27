@@ -7,6 +7,6 @@ namespace Playground {
     public class AssetProvider : ScriptableObject {
         [Header("Main")]
         public GameObject PlayerPrefab;
-        public GameObject CameraPrefab;
+        public Camera CameraPrefab;
     }
 }
