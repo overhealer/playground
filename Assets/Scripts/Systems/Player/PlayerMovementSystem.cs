@@ -9,6 +9,7 @@ namespace Playground {
         private GameConfig _gameConfig;
         private InputService _inputService;
 
+        private float _currentSpeed;
         private Vector3 _verticalVelocity;
 
         private float _xCamRotation;
@@ -35,12 +36,15 @@ namespace Playground {
             player.PlayerVirtualCamera.transform.localRotation = Quaternion.Euler(_xCamRotation, 0f, 0f);
             player.PlayerTranform.transform.Rotate(Vector3.up * _inputService.MouseAxis.x * _gameConfig.PlayerCameraSensitivity);
             //position
-            float currentSpeed = _inputService.IsSprint ? _gameConfig.PlayerRunSpeed : _gameConfig.PlayerWalkSpeed;
             Vector3 movementDirection = _inputService.MoveAxis.x * player.PlayerTranform.right +
                 _inputService.MoveAxis.z * player.PlayerTranform.forward;
+            float targetSpeed = _inputService.IsSprint ? _gameConfig.PlayerRunSpeed : _gameConfig.PlayerWalkSpeed;
+            _currentSpeed = Mathf.Lerp(_currentSpeed, movementDirection.magnitude > Mathf.Epsilon ? targetSpeed : 0, Time.deltaTime * 10f);
             player.PlayerCharacterController.Move(
-                (movementDirection.normalized *
-                currentSpeed + _verticalVelocity) * Time.deltaTime);
+                (movementDirection/*.normalized*/ *
+                _currentSpeed + _verticalVelocity) * Time.deltaTime);
+
+            player.CurrentMovementSpeed = _currentSpeed;
         }
     }
 }

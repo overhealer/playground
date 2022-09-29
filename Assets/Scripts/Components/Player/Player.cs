@@ -10,5 +10,7 @@ namespace Playground {
         public Animator PlayerAnimator;
         public Camera PlayerCamera;
         public CinemachineVirtualCamera PlayerVirtualCamera;
+
+        public float CurrentMovementSpeed;
     }
 }

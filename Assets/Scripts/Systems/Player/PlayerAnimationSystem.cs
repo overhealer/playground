@@ -15,7 +15,7 @@ namespace Playground {
         private int _fallAnimHash = Animator.StringToHash("FreeFall");
         private int _jumpAnimHash = Animator.StringToHash("Jump");
         private int _groundedAnimHash = Animator.StringToHash("Grounded");
-
+        private int _moveSpeedAnimHash = Animator.StringToHash("MotionSpeed");
 
         public void Run() {
             ref Player player = ref _filter.Get1(0);
@@ -31,8 +31,9 @@ namespace Playground {
             }
 
             //move 
-            _moveAnimBlend = Mathf.Lerp(_moveAnimBlend, _inputService.MoveAxis.magnitude, _moveBlendSpeed * Time.deltaTime);
+            _moveAnimBlend = Mathf.Lerp(_moveAnimBlend, player.CurrentMovementSpeed, _moveBlendSpeed * Time.deltaTime);
             player.PlayerAnimator.SetFloat(_moveAnimHash, _moveAnimBlend);
+            player.PlayerAnimator.SetFloat(_moveSpeedAnimHash, player.CurrentMovementSpeed);
         }
     }
 }
