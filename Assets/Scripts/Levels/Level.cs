@@ -9,13 +9,13 @@ namespace playground
         [SerializeField] private Transform _playerSpawnPoint;
         private PlayerCharacter _playerCharacter;
 
-        public void Init(AssetProvider assetProvider, GameConfig gameConfig)
+        public virtual void Init(AssetProvider assetProvider, GameConfig gameConfig)
         {
             _playerCharacter = Instantiate(assetProvider.PlayerPrefab, transform);
             _playerCharacter.Init(gameConfig);
         }
 
-        public void UpdateLevel()
+        public virtual void UpdateLevel()
         {
             _playerCharacter.UpdatePlayer();
         }
