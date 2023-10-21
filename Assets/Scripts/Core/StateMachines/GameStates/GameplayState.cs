@@ -23,9 +23,7 @@ namespace playground
         {
             _mainUI.InitGameCanvas();
 
-            Level level = null;
-            _currentLevel = level;
-            _currentLevel.Init();
+            InitLevel(0);
         }
 
         public void Exit()
@@ -41,6 +39,16 @@ namespace playground
         void IUpdateState.Update()
         {
             _currentLevel.UpdateLevel();
+        }
+
+        public void InitLevel(int id)
+        {
+            if(_currentLevel != null)
+            {
+                GameObject.Destroy(_currentLevel.gameObject);
+            }
+            _currentLevel = GameObject.Instantiate(_assetProvider.LevelDatabase.Levels[id]);
+            _currentLevel.Init(_assetProvider, _gameConfig);
         }
     }
 }
