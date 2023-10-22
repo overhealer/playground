@@ -50,11 +50,14 @@ namespace playground
             for (int i = 0; i < _possibilities.Count; i++)
             {
                 weights[i] = _possibilities[i].TileRandomWeight;
+                //Debug.Log(_possibilities[i] + "|" + _tileRules[_possibilities[i]]);
             }
-            LevelTile tile = _possibilities[Utils.GetRandomWeightedIndex(weights)];
-            GameObject.Instantiate(tile, new Vector3(TileID.x * _tileSize, 0, TileID.y * _tileSize), Quaternion.identity);
-            LevelTile = tile;
-            _possibilities = new List<LevelTile>() { tile };
+            int randomID = Utils.GetRandomWeightedIndex(weights);
+            LevelTile tile = _possibilities[randomID];
+            LevelTile tileInstance = GameObject.Instantiate(tile, new Vector3(TileID.x * _tileSize, 0, -TileID.y * _tileSize), Quaternion.identity);
+            LevelTile = tileInstance;
+            tileInstance.SetIDText(TileID);
+            _possibilities = new List<LevelTile>() { _possibilities[randomID] };
             Entropy = 0;
         }
 
@@ -93,7 +96,7 @@ namespace playground
                 {
                     if (!connectors.Contains(_tileRules[_possibilities[i]][(int)oppositeSide]))
                     {
-                        _possibilities.RemoveAt(i);
+                        _possibilities.Remove(_possibilities[i]);
                         isReduced = true;
                     }
                 }

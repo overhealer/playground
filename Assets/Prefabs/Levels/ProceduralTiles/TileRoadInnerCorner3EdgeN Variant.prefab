@@ -33,6 +33,11 @@ PrefabInstance:
       propertyPath: SouthEdge
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6593837851374926159, guid: b3c002133c6c25c44af4bbf95e4eee77,
+        type: 3}
+      propertyPath: TileRandomWeight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6687116807232050351, guid: b3c002133c6c25c44af4bbf95e4eee77,
         type: 3}
       propertyPath: m_RootOrder

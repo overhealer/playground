@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace playground
 {
-    public class PlayerCharacter : MonoBehaviour
+    public class PlayerCharacter : MonoBehaviour, IInteractWithWorld
     {
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private Animator _animator;

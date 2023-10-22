@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace playground
@@ -8,6 +9,7 @@ namespace playground
     {
         public EdgeType NorthEdge, EastEdge, SouthEdge, WestEdge;
         public float TileRandomWeight;
+        [SerializeField] private TMP_Text _idText;
 
         public EdgeType GetEdgeTypeByDirection(EdgeDirection direction)
         {
@@ -34,6 +36,10 @@ namespace playground
             result[2] = SouthEdge;
             result[3] = WestEdge;
             return result;
+        }
+        public void SetIDText(Vector2 id)
+        {
+            _idText.text = id.ToString();
         }
     }
 

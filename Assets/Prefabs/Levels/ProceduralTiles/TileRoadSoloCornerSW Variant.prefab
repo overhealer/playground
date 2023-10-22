@@ -33,6 +33,11 @@ PrefabInstance:
       propertyPath: SouthEdge
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6593837851374926159, guid: b3c002133c6c25c44af4bbf95e4eee77,
+        type: 3}
+      propertyPath: TileRandomWeight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6687116807232050351, guid: b3c002133c6c25c44af4bbf95e4eee77,
         type: 3}
       propertyPath: m_RootOrder
@@ -94,7 +99,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6687116807232050351, guid: b3c002133c6c25c44af4bbf95e4eee77,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5158128875258297273}
+      addedObject: {fileID: 3852954178884319096}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3c002133c6c25c44af4bbf95e4eee77, type: 3}
 --- !u!4 &5796137509252868046 stripped
@@ -176,7 +181,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 040d94d054ec7e24ab107208a252541c, type: 3}
---- !u!4 &5158128875258297273 stripped
+--- !u!4 &3852954178884319096 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5415640083858278616, guid: 040d94d054ec7e24ab107208a252541c,
     type: 3}

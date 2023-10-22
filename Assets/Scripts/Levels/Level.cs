@@ -11,7 +11,7 @@ namespace playground
 
         public virtual void Init(AssetProvider assetProvider, GameConfig gameConfig)
         {
-            _playerCharacter = Instantiate(assetProvider.PlayerPrefab, transform);
+            _playerCharacter = Instantiate(assetProvider.PlayerPrefab, _playerSpawnPoint.position, Quaternion.identity, transform);
             _playerCharacter.Init(gameConfig);
         }
 
