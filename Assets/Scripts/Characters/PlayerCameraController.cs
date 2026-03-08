@@ -11,6 +11,8 @@ namespace playground.Assets.Scripts.Characters
         IUpdatable,
         IInitialisable
     {
+        public Quaternion LookRotation => Quaternion.Euler(0f, cameraFollowTarget.eulerAngles.y, 0f);
+
         [SerializeField]
         private InputActionReference lookInputAction;
 

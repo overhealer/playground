@@ -148,8 +148,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2457763fb3817354fba9b4abe028b65d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Game.Services.SceneObjects
-  Initialisables: []
-  Updatables: []
+  Initialisables:
+  - {fileID: 421433219}
+  Updatables:
+  - {fileID: 421433219}
 --- !u!4 &365842470
 Transform:
   m_ObjectHideFlags: 0
@@ -165,6 +167,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &421433219 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7639853481124270151, guid: fc621e594baecbe41bbd32b8e9bb7ec6,
+    type: 3}
+  m_PrefabInstance: {fileID: 5066500560225178063}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &692607073
 Mesh:
   m_ObjectHideFlags: 0

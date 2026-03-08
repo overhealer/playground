@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4427436352415754659}
   - component: {fileID: 7816262499055983283}
-  - component: {fileID: 1001936363122642048}
   - component: {fileID: 2640206794382679358}
   - component: {fileID: 7116809899612971174}
   - component: {fileID: 3255226159940544124}
@@ -35,7 +34,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7859350074150973133}
-  - {fileID: 6239511219888296673}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &7816262499055983283
@@ -63,26 +61,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.08, z: 0}
---- !u!114 &1001936363122642048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 988008139704362154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ed10c72c65d8664599058bafcaf1444, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::playground.Assets.Scripts.Characters.PlayerMovement
-  moveInputAction: {fileID: -1680190386980627800, guid: 7e10118908da7d84ba4860c61d933042,
-    type: 3}
-  jumpInputAction: {fileID: -2099379676528639254, guid: 7e10118908da7d84ba4860c61d933042,
-    type: 3}
-  characterController: {fileID: 7816262499055983283}
-  playerAnimationController: {fileID: 3255226159940544124}
-  playerModel: {fileID: 7859350074150973133}
-  cameraFollowTarget: {fileID: 6239511219888296673}
 --- !u!114 &2640206794382679358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,12 +157,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7977001413567903130}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4427436352415754659}
+  m_Father: {fileID: 891947116842305574}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &858617770616336333
 PrefabInstance:
@@ -262,13 +240,54 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 6264963b01191b14490785e3c1b4e777,
         type: 3}
       propertyPath: m_ApplyRootMotion
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6264963b01191b14490785e3c1b4e777,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6239511219888296673}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6264963b01191b14490785e3c1b4e777,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1816742010018892114}
   m_SourcePrefab: {fileID: 100100000, guid: 6264963b01191b14490785e3c1b4e777, type: 3}
+--- !u!1 &516512637285143196 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6264963b01191b14490785e3c1b4e777,
+    type: 3}
+  m_PrefabInstance: {fileID: 858617770616336333}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1816742010018892114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 516512637285143196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebf6277747f33e84d856d551b5f48270, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::playground.Assets.Scripts.Characters.PlayerRootMotionMovementController
+  moveInputAction: {fileID: -1680190386980627800, guid: 7e10118908da7d84ba4860c61d933042,
+    type: 3}
+  jumpInputAction: {fileID: -2099379676528639254, guid: 7e10118908da7d84ba4860c61d933042,
+    type: 3}
+  sprintInputAction: {fileID: -7471211009204490832, guid: 7e10118908da7d84ba4860c61d933042,
+    type: 3}
+  animator: {fileID: 6521487111842697820}
+  characterController: {fileID: 7816262499055983283}
+  playerCameraController: {fileID: 7116809899612971174}
+  playerModelTransform: {fileID: 6239511219888296673}
+  headTransform: {fileID: 0}
+  rotationSpeed: 5
+  jumpSpeed: 5
+  jumpButtonGracePeriod: 0.1
+  cameraTransform: {fileID: 0}
 --- !u!4 &891947116842305574 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6264963b01191b14490785e3c1b4e777,
