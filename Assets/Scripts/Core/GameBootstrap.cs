@@ -1,45 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
+using playground.Assets.Scripts.Core.UI.UI;
 using UnityEngine;
 
-namespace playground
+namespace playground.Assets.Scripts.Core
 {
     public class GameBootstrap : MonoBehaviour
     {
-        public bool UseDebug;
-        public Game GameInstance => _gameInstance;
+        [SerializeField]
+        private UIService uiService;
 
-        [SerializeField] private AssetProvider _assetProvider;
-        [SerializeField] private GameConfig _gameConfig;
-        [SerializeField] private MainUI _mainUI;
-
-        private Game _gameInstance;
+        private GameInstance gameInstance;
 
         private void Awake()
         {
-            GameInit();
-        }
-
-        public void GameInit()
-        {
-            print("Start Game Init...");
-
             DontDestroyOnLoad(gameObject);
-            MainUI ui = Instantiate(_mainUI, transform);
 
-            _gameInstance = new Game(_assetProvider, ui, _gameConfig);
-
-            Debug.Log("Game Init complete!");
+            gameInstance = new GameInstance();
+            gameInstance.StartGame(uiService);
         }
 
         private void Update()
         {
-            _gameInstance?.OnUpdate();
+            if (gameInstance != null)
+            {
+                gameInstance.OnUpdate();
+            }
         }
 
-        private void FixedUpdate()
+        private void LateUpdate()
         {
-            _gameInstance?.OnFixedUpdate();
+            if (gameInstance != null)
+            {
+                gameInstance.OnLateUpdate();
+            }
         }
     }
 }

@@ -1,11 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace playground
+namespace playground.Assets.Scripts.Core.Services
 {
     public interface IService
     {
-        
     }
 }

@@ -1,8 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace playground
+namespace playground.Assets.Scripts.Core
 {
     public class ObjectPool<TPoolObject>
     {
@@ -16,7 +15,7 @@ namespace playground
             for (int i = 0; i < poolLength; i++)
             {
                 int id = randomPrefabs ? Random.Range(0, poolObject.Length) : i % poolObject.Length;
-                PoolItem o = GameObject.Instantiate(poolObject[id] as PoolItem);
+                PoolItem o = Object.Instantiate(poolObject[id] as PoolItem);
                 if (container)
                     o.transform.SetParent(container);
 
@@ -32,7 +31,7 @@ namespace playground
 
             for (int i = 0; i < poolLength; i++)
             {
-                PoolItem o = GameObject.Instantiate(poolObject as PoolItem);
+                PoolItem o = Object.Instantiate(poolObject as PoolItem);
                 if (container)
                     o.transform.SetParent(container);
 

@@ -1,15 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-namespace playground
+namespace playground.Assets.Scripts.Levels.Procedural
 {
-    public class LevelTile : MonoBehaviour
+    public class LevelTile :
+            MonoBehaviour
     {
         public EdgeType NorthEdge, EastEdge, SouthEdge, WestEdge;
         public float TileRandomWeight;
-        [SerializeField] private TMP_Text _idText;
+
+        [SerializeField]
+        private TMP_Text idText;
 
         public EdgeType GetEdgeTypeByDirection(EdgeDirection direction)
         {
@@ -39,7 +40,7 @@ namespace playground
         }
         public void SetIDText(Vector2 id)
         {
-            _idText.text = id.ToString();
+            idText.text = id.ToString();
         }
     }
 
@@ -57,5 +58,4 @@ namespace playground
         South = 2,
         West = 3
     }
-
 }

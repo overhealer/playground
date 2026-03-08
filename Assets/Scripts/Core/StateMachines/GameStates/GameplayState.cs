@@ -1,29 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using playground.Assets.Scripts.Configs;
+using playground.Assets.Scripts.Core.Services;
+using playground.Assets.Scripts.Core.StateMachines.DefaultStateMachine.UpdatableInterfaces;
+using playground.Assets.Scripts.Core.UI.UI;
+using playground.Assets.Scripts.UI.States;
 
 namespace playground
 {
-    public class GameplayState : State, IUpdateState, IFixedUpdateState
+    public class GameplayState :
+        State,
+        IUpdateState,
+        IFixedUpdateState
     {
-        private AssetProvider _assetProvider;
-        private GameConfig _gameConfig;
-        private MainUI _mainUI;
-        private Level _currentLevel;
-        private int _currentLevelNumber;
+        private PlayerConfig gameConfig;
+        private UIService uiService;
+        private int currentLevelNumber;
 
-        public GameplayState(AssetProvider assetProvider, GameConfig gameConfig, MainUI ui)
+        public GameplayState(PlayerConfig gameConfig, UIService ui)
         {
-            _assetProvider = assetProvider;
-            _gameConfig = gameConfig;
-            _mainUI = ui;
+            this.gameConfig = gameConfig;
+            uiService = ui;
         }
 
         public void Enter()
         {
-            _mainUI.InitGameCanvas();
+            ServiceLocator.Instance.Get<CameraService>().SpawnCamera();
+            ServiceLocator.Instance.Get<PlayerService>().SpawnPlayer();
 
-            InitLevel(0);
+            ServiceLocator.Instance.Get<UIService>().EnableState(UIStateEnum.Gameplay);
         }
 
         public void Exit()
@@ -33,22 +36,17 @@ namespace playground
 
         public void FixedUpdate()
         {
-            
+
         }
 
         void IUpdateState.Update()
         {
-            _currentLevel.UpdateLevel();
+
         }
 
-        public void InitLevel(int id)
+        private void OnLoaded()
         {
-            if(_currentLevel != null)
-            {
-                GameObject.Destroy(_currentLevel.gameObject);
-            }
-            _currentLevel = GameObject.Instantiate(_assetProvider.LevelDatabase.Levels[id]);
-            _currentLevel.Init(_assetProvider, _gameConfig);
+
         }
     }
 }

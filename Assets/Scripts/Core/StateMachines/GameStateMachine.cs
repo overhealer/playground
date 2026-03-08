@@ -1,21 +1,24 @@
+using playground.Assets.Scripts.Configs;
+using playground.Assets.Scripts.Core.StateMachines.DefaultStateMachine;
+using playground.Assets.Scripts.Core.StateMachines.DefaultStateMachine.StatesInterfaces;
+using playground.Assets.Scripts.Core.StateMachines.GameStates;
+using playground.Assets.Scripts.Core.UI.UI;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-namespace playground
+namespace playground.Assets.Scripts.Core.StateMachines
 {
     public class GameStateMachine : UpdateStateMachine
     {
-        public Dictionary<Type, IExitableState> States => _states;
+        public Dictionary<Type, IExitableState> States => states;
 
-        public GameStateMachine(AssetProvider assetProvider, MainUI ui, GameConfig gameConfig)
+        public GameStateMachine(UIService ui, PlayerConfig gameConfig)
         {
-            _states = new Dictionary<System.Type, IExitableState>()
+            states = new Dictionary<Type, IExitableState>()
             {
-                [typeof(GameBootstrapState)] = new GameBootstrapState(assetProvider, ui, this, gameConfig),
+                [typeof(GameBootstrapState)] = new GameBootstrapState(ui, this, gameConfig),
                 [typeof(LoadLevelState)] = new LoadLevelState(this),
-                [typeof(GameplayState)] = new GameplayState(assetProvider, gameConfig, ui),
+                [typeof(GameplayState)] = new GameplayState(gameConfig, ui),
             };
         }
     }

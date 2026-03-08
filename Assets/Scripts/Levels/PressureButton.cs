@@ -1,21 +1,23 @@
 using DG.Tweening;
+using playground.Assets.Scripts.Characters;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-namespace playground
+namespace playground.Assets.Scripts.Levels
 {
-    public class PressureButton : MonoBehaviour
+    public class PressureButton :
+            MonoBehaviour
     {
         public Action OnButtonPress;
 
-        [SerializeField] private Transform _pressurePanel;
-        [SerializeField] private TMP_Text _tipText;
+        [SerializeField]
+        private Transform pressurePanel;
+        [SerializeField]
+        private TMP_Text _tipText;
 
-        private bool _isPressed;
-        private Tween _pressTween;
+        private bool isPressed;
+        private Tween pressTween;
 
         public void SetTipText(string text)
         {
@@ -24,24 +26,24 @@ namespace playground
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.TryGetComponent(out IInteractWithWorld interactWith))
+            if (other.TryGetComponent(out IInteractOwner interactWith))
             {
-                _isPressed = true;
-                if(_pressTween != null)
-                    _pressTween.Kill();
-                _pressTween = _pressurePanel.DOLocalMoveY(-0.35f, 0.25f);
+                isPressed = true;
+                if (pressTween != null)
+                    pressTween.Kill();
+                pressTween = pressurePanel.DOLocalMoveY(-0.35f, 0.25f);
                 OnButtonPress?.Invoke();
             }
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.TryGetComponent(out IInteractWithWorld interactWith))
+            if (other.TryGetComponent(out IInteractOwner interactWith))
             {
-                _isPressed = false;
-                if (_pressTween != null)
-                    _pressTween.Kill();
-                _pressTween = _pressurePanel.DOLocalMoveY(-0.28f, 0.25f);
+                isPressed = false;
+                if (pressTween != null)
+                    pressTween.Kill();
+                pressTween = pressurePanel.DOLocalMoveY(-0.28f, 0.25f);
             }
         }
     }

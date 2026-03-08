@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using playground.Assets.Scripts.Common;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace playground
+namespace playground.Assets.Scripts.Levels.Procedural
 {
     public class Tile
     {
@@ -10,54 +11,54 @@ namespace playground
         public int Entropy;
         public LevelTile LevelTile;
 
-        private Dictionary<EdgeDirection, Tile> _neighbours = new Dictionary<EdgeDirection, Tile>();
-        private List<LevelTile> _possibilities = new List<LevelTile>();
-        private Dictionary<LevelTile, EdgeType[]> _tileRules;
-        private float _tileSize;
+        private Dictionary<EdgeDirection, Tile> neighbours = new Dictionary<EdgeDirection, Tile>();
+        private List<LevelTile> possibilities = new List<LevelTile>();
+        private Dictionary<LevelTile, EdgeType[]> tileRules;
+        private float tileSize;
 
         public Tile(Dictionary<LevelTile, EdgeType[]> tileRules, Vector2 id, float tileSize)
         {
             Entropy = tileRules.Keys.Count;
             TileID = id;
-            _possibilities = tileRules.Keys.ToList();
-            _tileSize = tileSize;
-            _tileRules = tileRules;
+            possibilities = tileRules.Keys.ToList();
+            this.tileSize = tileSize;
+            this.tileRules = tileRules;
         }
 
         public void AddNeighbour(EdgeDirection direction, Tile tile)
         {
-            _neighbours.Add(direction, tile);
+            neighbours.Add(direction, tile);
         }
 
         public Tile GetNeighbour(EdgeDirection direction)
         {
-            return _neighbours[direction];
+            return neighbours[direction];
         }
 
         public List<EdgeDirection> GetDirections()
         {
-            return _neighbours.Keys.ToList();
+            return neighbours.Keys.ToList();
         }
 
         public List<LevelTile> GetPossibilities()
         {
-            return _possibilities;
+            return possibilities;
         }
 
         public void Collapse()
         {
-            float[] weights = new float[_possibilities.Count];
-            for (int i = 0; i < _possibilities.Count; i++)
+            float[] weights = new float[possibilities.Count];
+            for (int i = 0; i < possibilities.Count; i++)
             {
-                weights[i] = _possibilities[i].TileRandomWeight;
+                weights[i] = possibilities[i].TileRandomWeight;
                 //Debug.Log(_possibilities[i] + "|" + _tileRules[_possibilities[i]]);
             }
-            int randomID = Utils.GetRandomWeightedIndex(weights);
-            LevelTile tile = _possibilities[randomID];
-            LevelTile tileInstance = GameObject.Instantiate(tile, new Vector3(TileID.x * _tileSize, 0, -TileID.y * _tileSize), Quaternion.identity);
+            int randomID = RandomUtility.GetRandomWeightedIndex(weights);
+            LevelTile tile = possibilities[randomID];
+            LevelTile tileInstance = Object.Instantiate(tile, new Vector3(TileID.x * tileSize, 0, -TileID.y * tileSize), Quaternion.identity);
             LevelTile = tileInstance;
             tileInstance.SetIDText(TileID);
-            _possibilities = new List<LevelTile>() { _possibilities[randomID] };
+            possibilities = new List<LevelTile>() { possibilities[randomID] };
             Entropy = 0;
         }
 
@@ -65,12 +66,12 @@ namespace playground
         {
             bool isReduced = false;
 
-            if(Entropy > 0)
+            if (Entropy > 0)
             {
                 List<EdgeType> connectors = new List<EdgeType>();
                 foreach (var neighbour in neighbourPosibilities)
                 {
-                    connectors.Add(_tileRules[neighbour][(int)direction]);
+                    connectors.Add(tileRules[neighbour][(int)direction]);
                 }
 
                 EdgeDirection oppositeSide = EdgeDirection.North;
@@ -92,19 +93,18 @@ namespace playground
                         break;
                 }
 
-                for (int i = _possibilities.Count - 1; i >= 0; i--)
+                for (int i = possibilities.Count - 1; i >= 0; i--)
                 {
-                    if (!connectors.Contains(_tileRules[_possibilities[i]][(int)oppositeSide]))
+                    if (!connectors.Contains(tileRules[possibilities[i]][(int)oppositeSide]))
                     {
-                        _possibilities.Remove(_possibilities[i]);
+                        possibilities.Remove(possibilities[i]);
                         isReduced = true;
                     }
                 }
-                Entropy = _possibilities.Count;
+                Entropy = possibilities.Count;
             }
-            
+
             return isReduced;
         }
     }
-
 }

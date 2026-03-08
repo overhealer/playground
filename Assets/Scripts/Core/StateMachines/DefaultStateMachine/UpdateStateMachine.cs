@@ -1,22 +1,32 @@
-using UnityEngine;
+using playground.Assets.Scripts.Core.StateMachines.DefaultStateMachine.StatesInterfaces;
+using playground.Assets.Scripts.Core.StateMachines.DefaultStateMachine.UpdatableInterfaces;
 
-public class UpdateStateMachine : StateMachine {
-    public virtual void UpdateState() {
-        if (_activeState is IUpdateState updateState)
-            updateState.Update();
-    }
+namespace playground.Assets.Scripts.Core.StateMachines.DefaultStateMachine
+{
+    public class UpdateStateMachine :
+        StateMachine
+    {
+        public virtual void UpdateState()
+        {
+            if (activeState is IUpdateState updateState)
+                updateState.Update();
+        }
 
-    public virtual void FixedUpdateState() {
-        if (_activeState is IFixedUpdateState fixedUpdateState)
-            fixedUpdateState.FixedUpdate();
-    }
+        public virtual void FixedUpdateState()
+        {
+            if (activeState is IFixedUpdateState fixedUpdateState)
+                fixedUpdateState.FixedUpdate();
+        }
 
-    public virtual void LateUpdateState() {
-        if (_activeState is ILateUpdateState lateUpdateState)
-            lateUpdateState.LateUpdate();
-    }
+        public virtual void LateUpdateState()
+        {
+            if (activeState is ILateUpdateState lateUpdateState)
+                lateUpdateState.LateUpdate();
+        }
 
-    public IExitableState GetActiveState() {
-        return _activeState;
+        public IExitableState GetActiveState()
+        {
+            return activeState;
+        }
     }
 }

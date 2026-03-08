@@ -1,11 +1,11 @@
+using Assets.Scripts.Game.Services;
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace playground
+namespace playground.Assets.Scripts.Core.Services
 {
-    public class TimeService : IService
+    public class TimeService :
+            Service
     {
         public void StartSlowMotion(float duration, float timeScale)
         {

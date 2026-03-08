@@ -1,5 +1,8 @@
-public interface IStateMachine
+namespace playground.Assets.Scripts.Core.StateMachines.DefaultStateMachine.StatesInterfaces
 {
-    void Enter<TState>() where TState : class, IState;
-    void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadState<TPayload>;
+    public interface IStateMachine
+    {
+        void Enter<TState>() where TState : class, IState;
+        void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadState<TPayload>;
+    }
 }

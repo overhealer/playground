@@ -1,26 +1,18 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Assets.Scripts.Game.Services;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine;
 
-namespace playground
+namespace playground.Assets.Scripts.Core.Services
 {
-    public class SaveService : IService
+    public class SaveService :
+            Service
     {
         string _savePath = Application.persistentDataPath;
-       
-        public void SaveGameConfig(GameConfig gameConfig)
-        {
-            string json = JsonUtility.ToJson(gameConfig, true);
-            SaveFile(json, "gameConfig.iwd");
-        }
 
-        
         public bool CheckFileExists(string name)
         {
-            return File.Exists(_savePath +"/"+ name + ".iwd");
+            return File.Exists(_savePath + "/" + name + ".iwd");
         }
 
         private void SaveFile(string jsonString, string fileName)

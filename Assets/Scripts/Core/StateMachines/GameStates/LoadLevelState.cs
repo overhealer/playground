@@ -1,43 +1,31 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using playground.Assets.Scripts.Core.StateMachines.DefaultStateMachine.StatesInterfaces;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace playground
+namespace playground.Assets.Scripts.Core.StateMachines.GameStates
 {
-    public class LoadLevelState : State, IPayloadState<LoadLevelPayload>
+    public class LoadLevelState :
+            State,
+            IPayloadState<LevelPayload>
     {
-        private GameStateMachine _gameStateMachine;
+        private GameStateMachine gameStateMachine;
 
         public LoadLevelState(GameStateMachine stateMachine)
         {
-            _gameStateMachine = stateMachine;
+            gameStateMachine = stateMachine;
         }
 
-        public void Enter(LoadLevelPayload payload)
+        public void Enter(LevelPayload payload)
         {
-            AsyncOperation op = SceneManager.LoadSceneAsync(payload.LevelToLoad);
-            if (payload.OnLoadComplete != null)
+            AsyncOperation op = SceneManager.LoadSceneAsync(payload.SceneToLoad);
+            if (payload.OnLoaded != null)
             {
-                op.completed += (async) => payload.OnLoadComplete.Invoke();
+                op.completed += (async) => payload.OnLoaded.Invoke();
             }
         }
 
         public void Exit()
         {
-        }
-    }
-
-    public class LoadLevelPayload
-    {
-        public string LevelToLoad;
-        public Action OnLoadComplete;
-
-        public LoadLevelPayload(string levelToLoad, Action onLoadComplete)
-        {
-            LevelToLoad = levelToLoad;
-            OnLoadComplete = onLoadComplete;
         }
     }
 }
