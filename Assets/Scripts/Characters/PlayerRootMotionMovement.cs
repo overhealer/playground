@@ -1,5 +1,4 @@
-﻿using playground.Assets.Scripts.Core.Interfaces;
-using playground.Assets.Scripts.Core.Services;
+﻿using overhealer.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 

@@ -1,10 +1,8 @@
+using overhealer.Core;
 using playground.Assets.Scripts.Configs;
-using playground.Assets.Scripts.Core.StateMachines.DefaultStateMachine;
-using playground.Assets.Scripts.Core.StateMachines.DefaultStateMachine.StatesInterfaces;
-using playground.Assets.Scripts.Core.StateMachines.GameStates;
-using playground.Assets.Scripts.Core.UI.UI;
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace playground.Assets.Scripts.Core.StateMachines
 {
@@ -16,9 +14,9 @@ namespace playground.Assets.Scripts.Core.StateMachines
         {
             states = new Dictionary<Type, IExitableState>()
             {
-                [typeof(GameBootstrapState)] = new GameBootstrapState(ui, this, gameConfig),
+                [typeof(GameBootstrapState)] = new GameBootstrapState(ui, this, () => Debug.Log("!")),
                 [typeof(LoadLevelState)] = new LoadLevelState(this),
-                [typeof(GameplayState)] = new GameplayState(gameConfig, ui),
+                //[typeof(GameplayState)] = new GameplayState(gameConfig, ui),
             };
         }
     }

@@ -1,7 +1,7 @@
-using playground.Assets.Scripts.Core.UI.UI;
+using overhealer.Core;
 using UnityEngine;
 
-namespace playground.Assets.Scripts.Core
+namespace playground.Assets.Scripts
 {
     public class GameBootstrap : MonoBehaviour
     {
@@ -14,8 +14,8 @@ namespace playground.Assets.Scripts.Core
         {
             DontDestroyOnLoad(gameObject);
 
-            gameInstance = new GameInstance();
-            gameInstance.StartGame(uiService);
+            //gameInstance = new GameInstance();
+            gameInstance.StartStateMachine();
         }
 
         private void Update()

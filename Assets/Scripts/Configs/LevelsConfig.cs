@@ -1,10 +1,11 @@
-using playground.Assets.Scripts.Configs;
+using overhealer.Core;
 using UnityEngine;
 
 namespace playground
 {
-    [CreateAssetMenu(menuName = "Configs/Level Database")]
-    public class LevelsConfig : BaseConfig<LevelsConfig>
+    [CreateAssetMenu(menuName = "Configs/LevelConfig")]
+    public class LevelsConfig :
+        BaseConfig<LevelsConfig>
     {
         public float Gravity = -9.81f;
     }

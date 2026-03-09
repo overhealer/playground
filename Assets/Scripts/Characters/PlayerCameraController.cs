@@ -1,6 +1,5 @@
-﻿using playground.Assets.Scripts.Configs;
-using playground.Assets.Scripts.Core.Interfaces;
-using playground.Assets.Scripts.Core.Services;
+﻿using overhealer.Core;
+using playground.Assets.Scripts.Configs;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -23,7 +22,7 @@ namespace playground.Assets.Scripts.Characters
 
         public void Init()
         {
-            ServiceLocator.Instance.Get<CameraService>().CurrentVirtualCamera.Follow = cameraFollowTarget;
+            //ServiceLocator.Instance.Get<CameraService>().CurrentVirtualCamera.Follow = cameraFollowTarget;
 
             sensitivity = PlayerConfig.Instance.CameraSensitivity;
         }

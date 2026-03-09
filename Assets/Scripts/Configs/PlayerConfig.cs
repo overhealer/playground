@@ -1,8 +1,9 @@
+using overhealer.Core;
 using UnityEngine;
 
 namespace playground.Assets.Scripts.Configs
 {
-    [CreateAssetMenu(menuName = "Configs/Player Config")]
+    [CreateAssetMenu(menuName = "Configs/PlayerConfig")]
     public class PlayerConfig :
             BaseConfig<PlayerConfig>
     {

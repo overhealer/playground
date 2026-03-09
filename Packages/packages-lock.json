@@ -1,5 +1,14 @@
 {
   "dependencies": {
+    "com.overhealer.core": {
+      "version": "https://github.com/overhealer/overhealer-core.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.test-framework": "1.6.0"
+      },
+      "hash": "bdaf89d0bfddf8d575da4c0b0687b7eaf3e5751c"
+    },
     "com.unity.burst": {
       "version": "1.8.28",
       "depth": 2,

@@ -1,4 +1,4 @@
-﻿using playground.Assets.Scripts.Core.Interfaces;
+﻿using overhealer.Core;
 using UnityEngine;
 
 namespace playground.Assets.Scripts.UI.Gameplay.Interact
